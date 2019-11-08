@@ -1,21 +1,20 @@
-#include <stdio.h>    /* printf, scanf definitions */
-#define KMS_PER_MILE 1.609 /* conversion constant  */
+Figure 2.16  A Program with a Run-time Error
+111 #include <stdio.h>
+262
+263 int
+264 main(void)
+265 {
+266       int    first, second;
+267       double temp, ans;
+268
+269       printf("Enter two integers> ");
+270       scanf("%d%d", &first, &second);
+271       temp = second / first;
+272       ans = first / temp;
+273       printf("The result is %.3f\n", ans);
+274
+275       return (0);
+276 }
 
-int
-main(void)
-{
-    double miles,  /* distance in miles	*/
-            kms;    /* equivalent distance in kilometers	*/
-
-    /* Get and echo the distance in miles. */
-    scanf("%lf", &miles);
-    printf("The distance in miles is %.2f.\n", miles);
-
-    /* Convert the distance to kilometers. */
-    kms = KMS_PER_MILE * miles;
-
-    /* Display the distance in kilometers. */
-    printf("That equals %.2f kilometers.\n", kms);
-
-    return (0);
-}
+Enter two integers> 14 3
+Arithmetic fault, divide by zero at line 272 of routine main
