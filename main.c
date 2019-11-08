@@ -1,21 +1,39 @@
-#include <stdio.h>    /* printf, scanf definitions */
-#define KMS_PER_MILE 1.609 /* conversion constant  */
+Figure 2.14  Miles-to-Kilometers Conversion Program with Named Files
+/* Converts distances from miles to kilometers.  	*/
+
+#include <stdio.h>    /* printf, scanf, fprint, fscanf, fopen, fclose definitions        	*/
+#define KMS_PER_MILE 1.609 /* conversion constant 	*/
 
 int
 main(void)
 {
-    double miles,  /* distance in miles	*/
-            kms;    /* equivalent distance in kilometers	*/
+    double miles, /* distance in miles	*/
+            kms;   /* equivalent distance in kilometers	*/
+    FILE   *inp,  /* pointer to input file	*/
+            *outp; /* pointer to output file	*/
+
+    /* Open the input and output files.    */
+    inp = fopen("b:distance.dat", "r");
+    outp = fopen("b:distance.out", "w");
 
     /* Get and echo the distance in miles. */
-    scanf("%lf", &miles);
-    printf("The distance in miles is %.2f.\n", miles);
+    fscanf(inp, "%lf", &miles);
+    fprintf(outp, "The distance in miles is %.2f.\n", miles);
 
     /* Convert the distance to kilometers. */
     kms = KMS_PER_MILE * miles;
 
     /* Display the distance in kilometers. */
-    printf("That equals %.2f kilometers.\n", kms);
+    fprintf(outp, "That equals %.2f kilometers.\n", kms);
+
+    /* Close files. */
+    fclose(inp);
+    fclose(outp);
 
     return (0);
 }
+Contents of input file distance.dat
+112.0
+Contents of output file distance.out
+        The distance in miles is 112.00.
+That equals 180.21 kilometers.
