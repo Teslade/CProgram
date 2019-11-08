@@ -1,21 +1,23 @@
-#include <stdio.h>    /* printf, scanf definitions */
-#define KMS_PER_MILE 1.609 /* conversion constant  */
+Figure 2.17  Revised Start of  main Function for Coin Evaluation
 
 int
 main(void)
 {
-    double miles,  /* distance in miles	*/
-            kms;    /* equivalent distance in kilometers	*/
+    char first, middle, last; /* input - 3 initials           */
+    int pennies, nickels;  /* input - count of each coin type */
+    int dimes, quarters;   /* input - count of each coin type */
+    int change;                /* output - change amount      */
+    int dollars;               /* output - dollar amount      */
+    int total_cents;           /* total cents                 */
+    int year;                  /* current year                */
 
-    /* Get and echo the distance in miles. */
-    scanf("%lf", &miles);
-    printf("The distance in miles is %.2f.\n", miles);
+    /* Get the current year.                                  */
+    printf("Enter the current year and press return> ");
+    scanf("%d", &year);
 
-    /* Convert the distance to kilometers. */
-    kms = KMS_PER_MILE * miles;
-
-    /* Display the distance in kilometers. */
-    printf("That equals %.2f kilometers.\n", kms);
-
-    return (0);
-}
+    /* Get the program user's initials.                       */
+    printf("Type in 3 initials and press return> ");
+    scanf("%c%c%c", &first, &middle, &last);
+    printf("Hello %c%c%c, let's check your coins' value in %d.\n",
+           first, middle, last, year);
+    ...
